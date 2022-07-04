@@ -147,7 +147,9 @@ const Home: NextPage = () => {
         >
           <span className="text-3xl">{item.emoji}</span>
         </div>
-        <div className="mt-2 text-base text-gray-300 ">{item.name}</div>
+        <div className="mt-2 text-base font-semibold text-gray-300">
+          {item.name}
+        </div>
       </div>
     );
   }
@@ -173,7 +175,7 @@ const Home: NextPage = () => {
         <div
           className={` ${
             L2SelectionHook == item.id ? "text-white" : "text-gray-400"
-          } `}
+          }  font-semibold `}
         >
           {item.name}
         </div>

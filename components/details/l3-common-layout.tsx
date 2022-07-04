@@ -55,7 +55,7 @@ function L3CommonLayout(item: L3CommonLayoutInterface) {
           }) => (
             <div key={item.id} className="mb-8">
               <div className="flex space-x-4 font-semibold">
-                <Image src={item.logo} width={100} height={100} alt="" />
+                <Image src={item.logo} width={72} height={72} alt="" />
                 <div className="font-semibold ">
                   {item.title}
                   <div className="text-sm font-normal text-purple-600 ">

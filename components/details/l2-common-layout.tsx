@@ -9,7 +9,7 @@ function L2CommonLayout(item: L2CommonLayoutInterface) {
   return (
     <div className="w-96">
       <div>
-        <span>{item.title}</span>
+        <span className="font-semibold ">{item.title}</span>
       </div>
     </div>
   );
