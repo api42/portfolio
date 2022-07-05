@@ -12,15 +12,15 @@ interface L3detailysCommonInterface {}
 
 function L3CommonLayout(item: L3CommonLayoutInterface) {
   return (
-    <div className="w-[38rem]">
+    <div className="sm:w-[38rem]">
       <div>
-        <span className="text-xl font-semibold">{item.title}</span>
+        <span className="text-base font-semibold sm:text-xl">{item.title}</span>
         <div
-          className={`${item.titleUnderlineColor} w-44 mt-2 h-1  rounded-sm`}
+          className={`${item.titleUnderlineColor} w-44 mt-4 h-1  rounded-sm`}
         ></div>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 sm:mt-12">
         {item.data.map(
           (item: {
             logo: string;
@@ -54,9 +54,15 @@ function L3CommonLayout(item: L3CommonLayoutInterface) {
             };
           }) => (
             <div key={item.id} className="mb-8">
-              <div className="flex space-x-4 font-semibold">
-                <Image src={item.logo} width={72} height={72} alt="" />
-                <div className="font-semibold ">
+              <div className="flex font-semibold sm:space-x-4">
+                <span className="hidden sm:block">
+                  <Image src={item.logo} width={72} height={72} alt="" />
+                </span>
+                <span className="block sm:hidden">
+                  <Image src={item.logo} width={52} height={52} alt="" />
+                </span>
+
+                <div className="ml-4 font-semibold sm:ml-0">
                   {item.title}
                   <div className="text-sm font-normal text-purple-600 ">
                     {item.data.title}

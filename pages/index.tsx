@@ -147,7 +147,7 @@ const Home: NextPage = () => {
         >
           <span className="text-3xl">{item.emoji}</span>
         </div>
-        <div className="mt-2 text-base font-semibold text-gray-300">
+        <div className="mt-2 text-xs font-semibold text-gray-300 sm:text-base">
           {item.name}
         </div>
       </div>
@@ -160,7 +160,7 @@ const Home: NextPage = () => {
 
     return (
       <div
-        className="flex items-center mb-8 space-x-2 cursor-pointer"
+        className="w-24 text-center cursor-pointer sm:mb-8 sm:space-x-4 sm:w-auto sm:items-center sm:flex"
         onClick={() => changeL2State(item.id, item.details_id)}
       >
         <div
@@ -168,14 +168,14 @@ const Home: NextPage = () => {
             L2SelectionHook == item.id
               ? " bg-yellow-500  "
               : "  text-gray-400 bg-yellow-200"
-          } `}
+          }    my-0 mx-auto sm:my-1 sm:mx-0`}
         >
           <span className="text-3xl ">{item.emoji}</span>
         </div>
         <div
           className={` ${
             L2SelectionHook == item.id ? "text-white" : "text-gray-400"
-          }  font-semibold `}
+          }  font-semibold sm:text-base text-xs sm:mt-0 mt-2 `}
         >
           {item.name}
         </div>
@@ -224,35 +224,45 @@ const Home: NextPage = () => {
         />
       </Head>
 
-      <main className="h-screen ">
-        <div className="relative h-full pb-4 mt-8 overflow-hidden sm:main-fixed-size sm:m-0-auto">
+      <main className="h-screen overflow-hidden sm:overflow-auto">
+        <div className="relative h-full pb-4 mt-4 overflow-hidden sm:mt-8 sm:main-fixed-size sm:m-0-auto">
           {/* Header: Start  */}
 
           <div
             id="header"
-            className="flex items-center justify-between text-base font-bold sm:mt-8 sm:text-lg"
+            className="flex items-center justify-between mx-4 text-base font-bold sm:mx-0 sm:mt-8 sm:text-lg"
           >
             {/* <div className="font-bold cursor-pointer ">
               <div className="text-xl "></div>
             </div> */}
-            <div className="relative hidden sm:block">
+            <div className="relative ">
               <div className="absolute z-0 opacity-30 -inset-1 transitiona-all rounded-xl blur-lg filter all-color-bg"></div>
-              <div className="text-xl ">Apurva Raj</div>
+              <div className="text-base sm:text-xl ">Apurva Raj</div>
             </div>
 
             <div className="flex">
-              <div className="mr-4">
+              <div className="">
                 <a
                   href="https://twitter.com/metaringsxyz"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Image
-                    src="/assets/twitter.png"
-                    alt="Twitter LOGO"
-                    width={32}
-                    height={32}
-                  />
+                  <span className="hidden sm:block">
+                    <Image
+                      src="/assets/twitter.png"
+                      alt="Twitter LOGO"
+                      width={32}
+                      height={32}
+                    />
+                  </span>
+                  <span className="block sm:hidden">
+                    <Image
+                      src="/assets/twitter.png"
+                      alt="Twitter LOGO"
+                      width={24}
+                      height={24}
+                    />
+                  </span>
                 </a>
               </div>
             </div>
@@ -261,13 +271,15 @@ const Home: NextPage = () => {
           {/* Header: End  */}
 
           {/* Body: Starts  */}
-          <div className="flex items-center justify-center mt-8 space-x-8 ">
-            {L1Options.map((item) => (
-              <div key={item.id}>{L1Squares(item)}</div>
-            ))}
+          <div className="block">
+            <div className="absolute flex items-center w-full mt-8 space-x-4 justify-evenly sm:justify-center sm:space-x-8 sm:relative bottom-8 sm:bottom-0">
+              {L1Options.map((item) => (
+                <div key={item.id}>{L1Squares(item)}</div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-12 ">
+          <div className="mt-4 sm:mt-12 ">
             <div className="flex items-start ">
               {/* L1 Selection Bar : Left */}
               {/* <div className="grid w-32 grid-cols-2 ">
@@ -277,10 +289,13 @@ const Home: NextPage = () => {
               </div> */}
 
               {/* L2 Selection Bar : Left */}
-              <div className="w-40 ">
+              <div className="w-full sm:w-40">
                 {L1Options.filter((object) => object.id == L1Selection).map(
                   (items) => (
-                    <div key={items.id}>
+                    <div
+                      key={items.id}
+                      className="flex justify-center sm:block"
+                    >
                       {items.forL2.map((item) => (
                         <div key={item.id}>{L2Lists(item)}</div>
                       ))}
@@ -291,7 +306,7 @@ const Home: NextPage = () => {
 
               {/* L3 View  */}
 
-              <div className="ml-20 ">
+              <div className="hidden ml-20 sm:block ">
                 {L3Options.filter((object) => object.id == L3SelectionHook).map(
                   (items) => (
                     <div key={items.id}>{items.component}</div>
@@ -300,16 +315,24 @@ const Home: NextPage = () => {
               </div>
             </div>
 
+            <div className="block mx-4 mt-4 sm:hidden">
+              {L3Options.filter((object) => object.id == L3SelectionHook).map(
+                (items) => (
+                  <div key={items.id}>{items.component}</div>
+                )
+              )}
+            </div>
+
             {/* Right pannel view  */}
           </div>
 
-          <div className="absolute right-0 top-56 ">
+          <div className="absolute right-0 hidden top-56 sm:block">
             <RightSideLayout />
           </div>
 
           {/* Body: End  */}
-          <div className="absolute text-center bottom-8 m-0-auto">
-            Made using no code with MetaRings
+          <div className="absolute sm:block hidden text-center left-1/2 ml-[-12rem] w-96 bottom-8 ">
+            <span className=""> 🏗 Built using no code with MetaRings </span>
           </div>
         </div>
       </main>
