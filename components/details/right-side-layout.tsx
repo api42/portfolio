@@ -18,7 +18,7 @@ function RightSideLayout() {
 
   return (
     <div className="font-semibold ">
-      <div className="flex items-center justify-center w-32 text-center bg-purple-400 rounded-md cursor-pointer h-28 ">
+      <div className="items-center justify-center hidden w-32 text-center bg-purple-400 rounded-md cursor-pointer  sm:flex h-28">
         NFT
         <br /> Coming soon
       </div>
@@ -26,7 +26,7 @@ function RightSideLayout() {
         {l1data.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col items-center justify-center mb-6 text-center square-shape"
+            className="flex-col items-center justify-center hidden mb-6 text-center sm:flex square-shape"
           >
             <div className="bg-green-300 square-shapes">
               {" "}

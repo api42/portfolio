@@ -160,7 +160,7 @@ const Home: NextPage = () => {
 
     return (
       <div
-        className="w-24 text-center cursor-pointer sm:mb-8 sm:space-x-4 sm:w-auto sm:items-center sm:flex"
+        className="w-20 text-center cursor-pointer sm:mb-8 sm:space-x-4 sm:w-auto sm:items-center sm:flex"
         onClick={() => changeL2State(item.id, item.details_id)}
       >
         <div
@@ -289,13 +289,10 @@ const Home: NextPage = () => {
               </div> */}
 
               {/* L2 Selection Bar : Left */}
-              <div className="w-full sm:w-40">
+              <div className="w-full mx-4 sm:mx-0 sm:w-40">
                 {L1Options.filter((object) => object.id == L1Selection).map(
                   (items) => (
-                    <div
-                      key={items.id}
-                      className="flex justify-center sm:block"
-                    >
+                    <div key={items.id} className="flex justify-start sm:block">
                       {items.forL2.map((item) => (
                         <div key={item.id}>{L2Lists(item)}</div>
                       ))}
@@ -330,6 +327,9 @@ const Home: NextPage = () => {
             <RightSideLayout />
           </div>
 
+          <div className="absolute right-0 block mr-4 sm:hidden bottom-40">
+            <RightSideLayout />
+          </div>
           {/* Body: End  */}
           <div className="absolute sm:block hidden text-center left-1/2 ml-[-12rem] w-96 bottom-8 ">
             <span className=""> 🏗 Built using no code with MetaRings </span>

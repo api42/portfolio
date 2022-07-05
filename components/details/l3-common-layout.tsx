@@ -62,7 +62,7 @@ function L3CommonLayout(item: L3CommonLayoutInterface) {
                   <Image src={item.logo} width={52} height={52} alt="" />
                 </span>
 
-                <div className="ml-4 font-semibold sm:ml-0">
+                <div className="w-full ml-4 font-semibold  sm:ml-0 sm:w-auto">
                   {item.title}
                   <div className="text-sm font-normal text-purple-600 ">
                     {item.data.title}
