@@ -272,7 +272,7 @@ const Home: NextPage = () => {
 
           {/* Body: Starts  */}
           <div className="block">
-            <div className="absolute flex items-center w-full mt-8 space-x-4 justify-evenly sm:justify-center sm:space-x-8 sm:relative bottom-8 sm:bottom-0">
+            <div className="absolute flex items-center w-full mt-8 space-x-4 justify-evenly sm:justify-center sm:space-x-8 sm:relative bottom-16 sm:bottom-0">
               {L1Options.map((item) => (
                 <div key={item.id}>{L1Squares(item)}</div>
               ))}
