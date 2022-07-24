@@ -32,14 +32,12 @@
 }
 
 
-
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: Gilroy;
-  background-color: #070813;
-  color: white;
+  background: linear-gradient(180deg, #13141c 0%, #0c0c17 100%);  color: white;
 }
 
 a {
@@ -85,4 +83,80 @@ a {
   width: 1080px;
   margin: 0 auto;
 
+}
+
+
+
+/* All color bgs  */
+
+.grad-bg-1{
+  background: linear-gradient(127.69deg, #47D3FF 4.89%, #C2E28A 94.11%);
+}
+.grad-bg-2{
+  background: linear-gradient(126.52deg, #96ECA3 5.69%, #FFD466 95.67%);}
+.grad-bg-3{
+  background: linear-gradient(53.88deg, #FDD568 5.4%, #FF73BE 95.43%)}
+.grad-bg-4{
+  background: linear-gradient(130.45deg, #FF78BA 3.41%, #4255FF 96.42%)}
+
+  .all-color-bg-2 {
+    background: -webkit-linear-gradient(0deg, #47D3FF 2.34%, #A2EF94 35.44%, #FDDC81 71.01%, #F6AFC0 97.19%);
+  
+  }
+
+
+  .pra-1{
+    box-sizing: border-box;
+    width: 164px;
+    height: 199px;
+    left: 668px;
+    top: 761px;
+    
+    border: 22px solid #FFFFFF;
+  }
+
+
+
+  .common-bg-color{
+    background-color: #1d1d2e;
+  }
+
+.project-title-color-1{
+  background: linear-gradient(90deg, #66a0f0 2.97%, #a8b6ff 96.53%);-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+text-fill-color: transparent;
+}
+
+.yelllow-red-grad{
+  background: linear-gradient(90deg, #F7D366 0%, #FE9F85 100%) 
+  
+}
+
+
+.blue-blue-grad{
+  background: linear-gradient(90deg, #00c2fa 0%, #005be9 100%) 
+  
+}
+
+.red-ping-grad{
+  background: linear-gradient(90deg, #cfa0f2 0%, #f5f1fe 100%) 
+  
+}
+
+.green-green-grad{
+  background: linear-gradient(90deg, #d3fc79 0%, #96e6a0 100%) 
+  
+}
+
+
+
+
+
+
+
+.title-gradient-2 {
+  background: linear-gradient(60deg,#ffcc47,#ff97c9);
+            -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 }

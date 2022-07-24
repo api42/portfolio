@@ -1,11 +1,17 @@
 import { Component, ReactFragment, useEffect, useState } from "react";
 
+import AllHobbies from "../components/details/hobbies/all-hobbies";
 import Blockchain from "../components/details/skills/blockchain";
+import CurrentProject from "../components/details/projects/current-projects";
+import CurrentProjects from "../components/details/projects/current-projects";
 import Design from "../components/details/skills/design";
 import FullStackDev from "../components/details/skills/full-stack-dev";
 import Head from "next/head";
 import Image from "next/image";
 import type { NextPage } from "next";
+import PersonalStory from "../components/details/story/personal-story";
+import PreviousProjects from "../components/details/projects/previous-projects";
+import ProfessionalStory from "../components/details/story/professional-story";
 import ProjectsDetails from "../components/details/projects";
 import RightSideLayout from "../components/details/right-side-layout";
 import SkillsDetails from "../components/details/skills";
@@ -24,22 +30,46 @@ interface L2 {
   name: string;
   details_id: number;
   emoji?: string;
+  bg?: string;
 }
 
 const Home: NextPage = () => {
   const L2OptionsForSkills = [
-    { id: 0, name: "Full stack dev", details_id: 0, emoji: "🧑‍💻" },
-    { id: 1, name: "Design", details_id: 1, emoji: "🎨" },
-    { id: 2, name: "Blockchain", details_id: 2, emoji: "⛓" },
+    {
+      id: 0,
+      name: "Full stack dev",
+      details_id: 0,
+      emoji: "🧑‍💻",
+      bg: " yelllow-red-grad",
+    },
+    {
+      id: 1,
+      name: "Design",
+      details_id: 1,
+      emoji: "🎨",
+      bg: "yelllow-red-grad",
+    },
+    {
+      id: 2,
+      name: "Blockchain",
+      details_id: 2,
+      emoji: "⛓",
+      bg: "yelllow-red-grad",
+    },
   ];
 
-  const L2OptionsForProjects = [{ id: 0, name: "Design ", details_id: 0 }];
+  const L2OptionsForProjects = [
+    { id: 0, name: "Current ", details_id: 3, bg: "blue-blue-grad" },
+    { id: 1, name: "Previous ", details_id: 4, bg: "blue-blue-grad" },
+  ];
 
-  const L2OptionsForHobbies = [{ id: 0, name: "All ", details_id: 0 }];
+  const L2OptionsForHobbies = [
+    { id: 0, name: "All ", details_id: 5, bg: "red-ping-grad" },
+  ];
 
   const L2OptionsForStory = [
-    { id: 0, name: "Personal ", details_id: 0 },
-    { id: 1, name: "Professional ", details_id: 0 },
+    { id: 0, name: "Personal ", details_id: 6, bg: "green-green-grad" },
+    { id: 1, name: "Professional ", details_id: 7, bg: "green-green-grad" },
   ];
 
   const L1Options = [
@@ -47,28 +77,28 @@ const Home: NextPage = () => {
       id: 0,
       name: "Skills",
       emoji: "🍳",
-      color: "bg-yellow-300",
+      color: "yelllow-red-grad",
       forL2: L2OptionsForSkills,
     },
     {
       id: 1,
       name: "Projects",
       emoji: "🗺",
-      color: "bg-blue-500",
+      color: "blue-blue-grad",
       forL2: L2OptionsForProjects,
     },
     {
       id: 2,
       name: "Hobbies",
       emoji: "🧗‍♂️",
-      color: "bg-red-500",
+      color: "red-ping-grad",
       forL2: L2OptionsForHobbies,
     },
     {
       id: 3,
       name: "Story",
       emoji: "🎢",
-      color: "bg-green-500",
+      color: "green-green-grad",
       forL2: L2OptionsForStory,
     },
   ];
@@ -77,7 +107,11 @@ const Home: NextPage = () => {
     { id: 0, name: "Full stack dev", component: <FullStackDev /> },
     { id: 1, name: "Design", component: <Design /> },
     { id: 2, name: "Blockchain", component: <Blockchain /> },
-    { id: 3, name: "Story" },
+    { id: 3, name: "Current Projects", component: <CurrentProjects /> },
+    { id: 4, name: "Previous Projects", component: <PreviousProjects /> },
+    { id: 5, name: "All Hobbies ", component: <AllHobbies /> },
+    { id: 6, name: "Personal Story", component: <PersonalStory /> },
+    { id: 7, name: "Professional Story", component: <ProfessionalStory /> },
   ];
 
   // Redux Values
@@ -99,15 +133,39 @@ const Home: NextPage = () => {
 
   //hook states
 
-  const [L1SelectionHook, setL1SelectionHook] = useState(0);
-  const [L2SelectionHook, setL2SelectionHook] = useState(0);
-  const [L3SelectionHook, setL3SelectionHook] = useState(0);
+  const [L1SelectionHook, setL1SelectionHook] = useState(L1Selection);
+  const [L2SelectionHook, setL2SelectionHook] = useState(L2Selection);
+  const [L3SelectionHook, setL3SelectionHook] = useState(L3Selection);
 
   //Handle clicks
 
   function changeL1State(id: number) {
     changeL1Selection(id);
-    changeL2Selection(0);
+    switch (id) {
+      case 0:
+        changeL3Selection(0);
+        changeL2Selection(0);
+
+        break;
+      case 1:
+        changeL3Selection(3);
+        changeL2Selection(0);
+
+        break;
+      case 2:
+        changeL3Selection(5);
+        changeL2Selection(0);
+
+        break;
+      case 3:
+        changeL3Selection(6);
+        changeL2Selection(0);
+
+        break;
+
+      default:
+        break;
+    }
   }
 
   function changeL2State(id: number, detailsID: number) {
@@ -118,6 +176,9 @@ const Home: NextPage = () => {
   // Handle new renders
   useEffect(() => {
     setL1SelectionHook(L1Selection);
+    setL2SelectionHook(0);
+
+    setL3SelectionHook(L3Selection);
   }, [L1Selection]);
 
   useEffect(() => {
@@ -135,19 +196,21 @@ const Home: NextPage = () => {
     return (
       <div
         key={item.id}
-        className={`  " flex-col mb-3 flex  items-center justify-center" `}
+        className={`  " flex-col mb-3 flex  items-center justify-center"  hover:scale-105 `}
         onClick={() => changeL1State(item.id)}
       >
         <div
           className={` ${squarShapeCSSClass} + " " + ${
-            L1SelectionHook == item.id
-              ? "border-white border-[1px]"
-              : "border-0 border-transparent"
-          } `}
+            L1SelectionHook == item.id ? " text-white " : " opacity-60"
+          }  `}
         >
           <span className="text-3xl">{item.emoji}</span>
         </div>
-        <div className="mt-2 text-xs font-semibold text-gray-300 sm:text-base">
+        <div
+          className={`${
+            L1SelectionHook == item.id ? " text-white " : " text-gray-400"
+          }  mt-2 text-xs font-semibold sm:text-base`}
+        >
           {item.name}
         </div>
       </div>
@@ -156,19 +219,17 @@ const Home: NextPage = () => {
 
   function L2Lists(item: L2) {
     const listCSSClass =
-      " square-shapes border-[0.5px]   w-36 rounded-md   text-center flex justify-center items-center   font-normal";
+      " square-shapes     w-36 rounded-md   text-center flex justify-center items-center   font-normal";
 
     return (
       <div
-        className="w-20 text-center cursor-pointer sm:mb-8 sm:space-x-4 sm:w-auto sm:items-center sm:flex"
+        className="pl-4 text-center cursor-pointer sm:mb-8 sm:space-x-4 sm:w-auto sm:items-center sm:flex hover:scale-105"
         onClick={() => changeL2State(item.id, item.details_id)}
       >
         <div
           className={` ${listCSSClass} + " " + ${
-            L2SelectionHook == item.id
-              ? " bg-yellow-500  "
-              : "  text-gray-400 bg-yellow-200"
-          }    my-0 mx-auto sm:my-1 sm:mx-0`}
+            L2SelectionHook == item.id ? "   " : "  opacity-60 "
+          }    my-0 mx-auto sm:my-1 sm:mx-0 ${item.bg} `}
         >
           <span className="text-3xl ">{item.emoji}</span>
         </div>
@@ -289,7 +350,7 @@ const Home: NextPage = () => {
               </div> */}
 
               {/* L2 Selection Bar : Left */}
-              <div className="w-full mx-4 sm:mx-0 sm:w-40">
+              <div className="w-full mx-4 sm:mx-0 sm:w-44">
                 {L1Options.filter((object) => object.id == L1Selection).map(
                   (items) => (
                     <div key={items.id} className="flex justify-start sm:block">
@@ -303,7 +364,7 @@ const Home: NextPage = () => {
 
               {/* L3 View  */}
 
-              <div className="hidden ml-20 sm:block ">
+              <div className="hidden ml-16 sm:block ">
                 {L3Options.filter((object) => object.id == L3SelectionHook).map(
                   (items) => (
                     <div key={items.id}>{items.component}</div>
@@ -323,7 +384,7 @@ const Home: NextPage = () => {
             {/* Right pannel view  */}
           </div>
 
-          <div className="absolute right-0 hidden top-56 sm:block">
+          <div className="absolute right-0 hidden top-[15rem] sm:block">
             <RightSideLayout />
           </div>
 
@@ -332,7 +393,20 @@ const Home: NextPage = () => {
           </div>
           {/* Body: End  */}
           <div className="absolute sm:block hidden text-center left-1/2 ml-[-12rem] w-96 bottom-8 ">
-            <span className=""> 🏗 Built using no code with MetaRings </span>
+            <span className="">
+              {" "}
+              🏗 Built using no code with{" "}
+              <span className="font-semibold cursor-pointer title-gradient-2">
+                <a
+                  href="https://metarings.xyz"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {" "}
+                  MetaRings
+                </a>
+              </span>
+            </span>
           </div>
         </div>
       </main>
