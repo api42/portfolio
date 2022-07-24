@@ -1,7 +1,11 @@
 import React from "react";
 
 function ProfessionalStory() {
-  return <div>Coming Soon</div>;
+  return (
+    <div className="flex justify-center text-3xl font-semibold text-center ">
+      Coming Soon
+    </div>
+  );
 }
 
 export default ProfessionalStory;

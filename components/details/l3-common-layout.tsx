@@ -11,8 +11,6 @@ interface L3CommonLayoutInterface {
   animation?: string;
 }
 
-interface L3detailysCommonInterface {}
-
 function L3CommonLayout(item: L3CommonLayoutInterface) {
   return (
     <div className="sm:w-[40rem]">

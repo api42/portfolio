@@ -49,7 +49,7 @@ function Blockchain() {
       title: "Next JS | React JS | Express JS |  jQuery | Vanila JS",
       data: projects_for_fullstack_data[0],
       skills: "💎 💎 💎",
-      logo: "/assets/notion-logo.png",
+      logo: "/assets/etherum-logo-1.png",
       uid: 101,
       AnimationX: 0,
       experience: 3,
@@ -62,7 +62,7 @@ function Blockchain() {
       title: "Tailwind CSS | Bootstrap | Material UI | SASS | CSS",
       data: projects_for_fullstack_data[1],
       skills: "💎 💎 💎 💎",
-      logo: "/assets/figma-logo-1.png",
+      logo: "/assets/polygon-matic-logo.png",
       uid: 102,
       AnimationX: 5,
       experience: 3,
@@ -75,16 +75,11 @@ function Blockchain() {
       title: "Rive",
       data: projects_for_fullstack_data[2],
       skills: "💎 💎",
-      logo: "/assets/rive-logo.png",
+      logo: "/assets/solana-sol-logo.png",
       uid: 103,
       AnimationX: 0,
       experience: 1,
-      riveComponent: (
-        <div className="mt-4">
-          {" "}
-          <Rive src="/assets/lamp.riv" />
-        </div>
-      ),
+
       AnimationY: 5,
     },
   ];
@@ -96,7 +91,6 @@ function Blockchain() {
         titleUnderlineColor={titleUnderlineColor}
         data={full_stack_data}
       />
-      <div></div>
     </div>
   );
 }
