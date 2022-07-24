@@ -114,52 +114,34 @@ const Home: NextPage = () => {
     { id: 7, name: "Professional Story", component: <ProfessionalStory /> },
   ];
 
-  // Redux Values
-
-  const L1Selection = useHomeViewStore((state) => state.L1Selection);
-  const changeL1Selection = useHomeViewStore(
-    (state) => state.changeL1Selection
-  );
-
-  const L2Selection = useHomeViewStore((state) => state.L2Selection);
-  const changeL2Selection = useHomeViewStore(
-    (state) => state.changeL2Selection
-  );
-
-  const L3Selection = useHomeViewStore((state) => state.L3Selection);
-  const changeL3Selection = useHomeViewStore(
-    (state) => state.changeL3Selection
-  );
-
   //hook states
 
-  const [L1SelectionHook, setL1SelectionHook] = useState(L1Selection);
-  const [L2SelectionHook, setL2SelectionHook] = useState(L2Selection);
-  const [L3SelectionHook, setL3SelectionHook] = useState(L3Selection);
+  const [L1SelectionHook, setL1SelectionHook] = useState(0);
+  const [L2SelectionHook, setL2SelectionHook] = useState(0);
+  const [L3SelectionHook, setL3SelectionHook] = useState(0);
 
   //Handle clicks
 
   function changeL1State(id: number) {
-    changeL1Selection(id);
+    setL1SelectionHook(id);
+
+    setL2SelectionHook(0);
+
     switch (id) {
       case 0:
-        changeL3Selection(0);
-        changeL2Selection(0);
+        setL3SelectionHook(0);
 
         break;
       case 1:
-        changeL3Selection(3);
-        changeL2Selection(0);
+        setL3SelectionHook(3);
 
         break;
       case 2:
-        changeL3Selection(5);
-        changeL2Selection(0);
+        setL3SelectionHook(5);
 
         break;
       case 3:
-        changeL3Selection(6);
-        changeL2Selection(0);
+        setL3SelectionHook(6);
 
         break;
 
@@ -169,22 +151,21 @@ const Home: NextPage = () => {
   }
 
   function changeL2State(id: number, detailsID: number) {
-    changeL2Selection(id);
-    changeL3Selection(detailsID);
+    setL2SelectionHook(id);
+    setL3SelectionHook(detailsID);
   }
 
   // Handle new renders
-  useEffect(() => {
-    setL1SelectionHook(L1Selection);
-    setL2SelectionHook(0);
+  // useEffect(() => {
+  //   setL1SelectionHook(L1Selection);
 
-    setL3SelectionHook(L3Selection);
-  }, [L1Selection]);
+  //   setL3SelectionHook(L3Selection);
+  // }, [L1Selection]);
 
-  useEffect(() => {
-    setL2SelectionHook(L2Selection);
-    setL3SelectionHook(L3Selection);
-  }, [L2Selection]);
+  // useEffect(() => {
+  //   setL2SelectionHook(L2Selection);
+  //   setL3SelectionHook(L3Selection);
+  // }, [L2Selection]);
 
   function L1Squares(item: L1) {
     const squarShapeCSSClass =
@@ -351,7 +332,7 @@ const Home: NextPage = () => {
 
               {/* L2 Selection Bar : Left */}
               <div className="w-full mx-4 sm:mx-0 sm:w-44">
-                {L1Options.filter((object) => object.id == L1Selection).map(
+                {L1Options.filter((object) => object.id == L1SelectionHook).map(
                   (items) => (
                     <div key={items.id} className="flex justify-start sm:block">
                       {items.forL2.map((item) => (
