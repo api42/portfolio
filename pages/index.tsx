@@ -1,8 +1,7 @@
-import { Component, ReactFragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import AllHobbies from "../components/details/hobbies/all-hobbies";
 import Blockchain from "../components/details/skills/blockchain";
-import CurrentProject from "../components/details/projects/current-projects";
 import CurrentProjects from "../components/details/projects/current-projects";
 import Design from "../components/details/skills/design";
 import FullStackDev from "../components/details/skills/full-stack-dev";
@@ -12,9 +11,7 @@ import type { NextPage } from "next";
 import PersonalStory from "../components/details/story/personal-story";
 import PreviousProjects from "../components/details/projects/previous-projects";
 import ProfessionalStory from "../components/details/story/professional-story";
-import ProjectsDetails from "../components/details/projects";
 import RightSideLayout from "../components/details/right-side-layout";
-import SkillsDetails from "../components/details/skills";
 import { useHomeViewStore } from "../ViewStore/homeViewStore";
 
 interface L1 {
@@ -34,6 +31,22 @@ interface L2 {
 }
 
 const Home: NextPage = () => {
+  const StopDMAnimation = useHomeViewStore((state) => state.StopDMAnimation);
+
+  const changeStopDMAnimation = useHomeViewStore(
+    (state) => state.changeStopDMAnimation
+  );
+
+  const [dmsOpenHook, setDmsOpenHook] = useState(StopDMAnimation);
+
+  const dmsOpen = dmsOpenHook ? "animate-bounce" : "animate-none";
+
+  useEffect(() => {
+    return () => {
+      setDmsOpenHook(StopDMAnimation);
+    };
+  }, [StopDMAnimation]);
+
   const L2OptionsForSkills = [
     {
       id: 0,
@@ -155,18 +168,6 @@ const Home: NextPage = () => {
     setL3SelectionHook(detailsID);
   }
 
-  // Handle new renders
-  // useEffect(() => {
-  //   setL1SelectionHook(L1Selection);
-
-  //   setL3SelectionHook(L3Selection);
-  // }, [L1Selection]);
-
-  // useEffect(() => {
-  //   setL2SelectionHook(L2Selection);
-  //   setL3SelectionHook(L3Selection);
-  // }, [L2Selection]);
-
   function L1Squares(item: L1) {
     const squarShapeCSSClass =
       "h-10 w-10 rounded-md  flex-center flex cursor-pointer" +
@@ -177,7 +178,7 @@ const Home: NextPage = () => {
     return (
       <div
         key={item.id}
-        className={`  " flex-col mb-3 flex  items-center justify-center"  hover:scale-105 `}
+        className={`  "cursor-pointer flex-col mb-3 flex  items-center justify-center"  hover:scale-105 `}
         onClick={() => changeL1State(item.id)}
       >
         <div
@@ -190,7 +191,7 @@ const Home: NextPage = () => {
         <div
           className={`${
             L1SelectionHook == item.id ? " text-white " : " text-gray-400"
-          }  mt-2 text-xs font-semibold sm:text-base`}
+          }  mt-2 text-xs font-semibold sm:text-base cursor-pointer`}
         >
           {item.name}
         </div>
@@ -281,14 +282,13 @@ const Home: NextPage = () => {
               <div className="absolute z-0 opacity-30 -inset-1 transitiona-all rounded-xl blur-lg filter all-color-bg"></div>
               <div className="text-base sm:text-xl ">Apurva Raj</div>
             </div>
-
-            <div className="flex">
-              <div className="">
-                <a
-                  href="https://twitter.com/metaringsxyz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+            <a
+              href="https://twitter.com/metaringsxyz"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex flex-col items-center">
+                <div className="">
                   <span className="hidden sm:block">
                     <Image
                       src="/assets/twitter.png"
@@ -305,9 +305,15 @@ const Home: NextPage = () => {
                       height={24}
                     />
                   </span>
-                </a>
+                </div>
+                <div
+                  className={` ${dmsOpen} text-xs rounded-sm  title-gradient-2`}
+                >
+                  {" "}
+                  DMs Open
+                </div>
               </div>
-            </div>
+            </a>
           </div>
 
           {/* Header: End  */}
@@ -323,13 +329,6 @@ const Home: NextPage = () => {
 
           <div className="mt-4 sm:mt-12 ">
             <div className="flex items-start ">
-              {/* L1 Selection Bar : Left */}
-              {/* <div className="grid w-32 grid-cols-2 ">
-                {L1Options.map((item) => (
-                  <div key={item.id}>{L1Squares(item)}</div>
-                ))}
-              </div> */}
-
               {/* L2 Selection Bar : Left */}
               <div className="w-full mx-4 sm:mx-0 sm:w-44">
                 {L1Options.filter((object) => object.id == L1SelectionHook).map(

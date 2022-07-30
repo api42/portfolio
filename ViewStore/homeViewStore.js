@@ -11,6 +11,10 @@ let HomeViewStore = (set) => ({
 
   L3Selection: 0,
   changeL3Selection: (id) => set((state) => ({ L3Selection: id })),
+
+  StopDMAnimation: true,
+  changeStopDMAnimation: (input) =>
+    set((state) => ({ StopDMAnimation: input })),
 });
 
 HomeViewStore = devtools(HomeViewStore);

@@ -85,8 +85,6 @@ a {
 
 }
 
-
-
 /* All color bgs  */
 
 .grad-bg-1{
@@ -149,14 +147,29 @@ text-fill-color: transparent;
   
 }
 
-
-
-
-
-
-
 .title-gradient-2 {
   background: linear-gradient(60deg,#ffcc47,#ff97c9);
             -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.box-shadow-1 {
+  box-shadow: -9px -9px 16px rgba(255, 255, 255, 0.6)
+}
+
+.main-bg {
+  background: linear-gradient(180deg, #13141c 0%, #0c0c17 100%);  color: white;
+
 }
