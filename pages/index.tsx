@@ -320,7 +320,7 @@ const Home: NextPage = () => {
               <div className="text-base sm:text-xl ">Apurva Raj</div>
             </div>
             <a
-              href="https://twitter.com/metaringsxyz"
+              href="https://twitter.com/apimetaring"
               target="_blank"
               rel="noopener noreferrer"
             >
