@@ -7,11 +7,13 @@ import Design from "../components/details/skills/design";
 import FullStackDev from "../components/details/skills/full-stack-dev";
 import Head from "next/head";
 import Image from "next/image";
+import NFTMain from "../components/details/NFT/main";
 import type { NextPage } from "next";
 import PersonalStory from "../components/details/story/personal-story";
 import PreviousProjects from "../components/details/projects/previous-projects";
 import ProfessionalStory from "../components/details/story/professional-story";
 import RightSideLayout from "../components/details/right-side-layout";
+import Try from "../components/details/NFT/try";
 import { useHomeViewStore } from "../ViewStore/homeViewStore";
 
 interface L1 {
@@ -40,12 +42,6 @@ const Home: NextPage = () => {
   const [dmsOpenHook, setDmsOpenHook] = useState(StopDMAnimation);
 
   const dmsOpen = dmsOpenHook ? "animate-bounce" : "animate-none";
-
-  useEffect(() => {
-    return () => {
-      setDmsOpenHook(StopDMAnimation);
-    };
-  }, [StopDMAnimation]);
 
   const L2OptionsForSkills = [
     {
@@ -81,59 +77,88 @@ const Home: NextPage = () => {
   ];
 
   const L2OptionsForStory = [
-    { id: 0, name: "Personal ", details_id: 6, bg: "green-green-grad" },
-    { id: 1, name: "Professional ", details_id: 7, bg: "green-green-grad" },
+    { id: 0, name: "Brief ", details_id: 6, bg: "green-green-grad" },
   ];
 
   const L1Options = [
     {
       id: 0,
+      name: "Story",
+      emoji: "🎢",
+      color: "green-green-grad",
+      forL2: L2OptionsForStory,
+    },
+    {
+      id: 1,
       name: "Skills",
       emoji: "🍳",
       color: "yelllow-red-grad",
       forL2: L2OptionsForSkills,
     },
     {
-      id: 1,
+      id: 2,
       name: "Projects",
       emoji: "🗺",
       color: "blue-blue-grad",
       forL2: L2OptionsForProjects,
     },
     {
-      id: 2,
+      id: 3,
       name: "Hobbies",
       emoji: "🧗‍♂️",
       color: "red-ping-grad",
       forL2: L2OptionsForHobbies,
     },
-    {
-      id: 3,
-      name: "Story",
-      emoji: "🎢",
-      color: "green-green-grad",
-      forL2: L2OptionsForStory,
-    },
   ];
 
   const L3Options = [
-    { id: 0, name: "Full stack dev", component: <FullStackDev /> },
-    { id: 1, name: "Design", component: <Design /> },
-    { id: 2, name: "Blockchain", component: <Blockchain /> },
-    { id: 3, name: "Current Projects", component: <CurrentProjects /> },
-    { id: 4, name: "Previous Projects", component: <PreviousProjects /> },
-    { id: 5, name: "All Hobbies ", component: <AllHobbies /> },
-    { id: 6, name: "Personal Story", component: <PersonalStory /> },
-    { id: 7, name: "Professional Story", component: <ProfessionalStory /> },
+    { id: 0, name: "Brief", component: <PersonalStory /> },
+    { id: 1, name: "Full stack dev", component: <FullStackDev /> },
+    { id: 2, name: "Design", component: <Design /> },
+    { id: 3, name: "Blockchain", component: <Blockchain /> },
+    { id: 4, name: "Current Projects", component: <CurrentProjects /> },
+    { id: 5, name: "Previous Projects", component: <PreviousProjects /> },
+    { id: 6, name: "All Hobbies ", component: <AllHobbies /> },
+    { id: 7, name: "Personal Story", component: <PersonalStory /> },
+    { id: 8, name: "Professional Story", component: <NFTMain /> },
+    { id: 9, name: "NFT Details", componenet: <NFTMain /> },
+    { id: 10, name: "NFT Details2", componenet: <Try /> },
   ];
+
+  const L3Selection = useHomeViewStore((state) => state.L3Selection);
+
+  const changeL3Selection = useHomeViewStore(
+    (state) => state.changeL3Selection
+  );
+
+  const NFTDisplayViewStore = useHomeViewStore(
+    (state) => state.NFTDisplayViewStore
+  );
+  const changeNFTDisplayViewStore = useHomeViewStore(
+    (state) => state.changeNFTDisplayViewStore
+  );
 
   //hook states
 
   const [L1SelectionHook, setL1SelectionHook] = useState(0);
   const [L2SelectionHook, setL2SelectionHook] = useState(0);
-  const [L3SelectionHook, setL3SelectionHook] = useState(0);
+  const [L3SelectionHook, setL3SelectionHook] = useState(L3Selection);
+  const [NFTDisplay, setNFTDisplay] = useState(NFTDisplayViewStore);
 
   //Handle clicks
+
+  useEffect(() => {
+    changeStopDMAnimation(StopDMAnimation);
+    setDmsOpenHook(StopDMAnimation);
+    changeL3Selection(L3Selection);
+
+    setL3SelectionHook(L3Selection);
+    console.log("lr changed", L3Selection);
+  }, [StopDMAnimation, L3Selection, L1SelectionHook]);
+
+  useEffect(() => {
+    setNFTDisplay(NFTDisplayViewStore);
+  }, [NFTDisplayViewStore]);
 
   function changeL1State(id: number) {
     setL1SelectionHook(id);
@@ -142,18 +167,22 @@ const Home: NextPage = () => {
 
     switch (id) {
       case 0:
+        changeL3Selection(0);
         setL3SelectionHook(0);
 
         break;
       case 1:
+        changeL3Selection(3);
         setL3SelectionHook(3);
 
         break;
       case 2:
+        changeL3Selection(5);
         setL3SelectionHook(5);
 
         break;
       case 3:
+        changeL3Selection(6);
         setL3SelectionHook(6);
 
         break;
@@ -178,7 +207,7 @@ const Home: NextPage = () => {
     return (
       <div
         key={item.id}
-        className={`  "cursor-pointer flex-col mb-3 flex  items-center justify-center"  hover:scale-105 `}
+        className={`  "cursor-pointer flex-col mb-3 flex  items-center justify-center"  hover:scale-105 w-14 `}
         onClick={() => changeL1State(item.id)}
       >
         <div
@@ -268,6 +297,14 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="h-screen overflow-hidden sm:overflow-auto">
+        {NFTDisplay ? (
+          <div className="absolute z-50 w-full h-full backdrop-blur-lg">
+            {/* <div className="absolute w-full h-full bg-black opacity-95"></div> */}
+            <NFTMain />
+          </div>
+        ) : (
+          <></>
+        )}
         <div className="relative h-full pb-4 mt-4 overflow-hidden sm:mt-8 sm:main-fixed-size sm:m-0-auto">
           {/* Header: Start  */}
 
@@ -364,7 +401,7 @@ const Home: NextPage = () => {
             {/* Right pannel view  */}
           </div>
 
-          <div className="absolute right-0 hidden top-[15rem] sm:block">
+          <div className="absolute right-0 hidden top-[16rem] sm:block">
             <RightSideLayout />
           </div>
 

@@ -54,23 +54,10 @@ function L3CommonLayout(item: L3CommonLayoutInterface) {
           }) => (
             <div
               key={item.id}
-              className="relative mb-8 rounded-lg common-bg-color h-[17rem] sm:w-48"
+              className="relative mb-8 rounded-lg common-bg-color h-[14rem] sm:w-48"
             >
               <div className="items-start justify-start font-semibold ">
-                <motion.div
-                  animate={{ scale: 1.03 }}
-                  transition={{
-                    duration: 0.9,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                >
-                  <div className="-mt-4 -ml-4 ">
-                    <Image src={item.logo} width={42} height={42} alt="" />
-                  </div>
-                </motion.div>
-
-                <div className="mt-4 ml-4 space-x-2" data-tip="Skill Level">
+                {/* <div className="mt-4 ml-4 space-x-2" data-tip="Skill Level">
                   {Array.from({ length: item.experience }, (_, i) => (
                     <span key={i}>
                       <Image
@@ -81,7 +68,7 @@ function L3CommonLayout(item: L3CommonLayoutInterface) {
                       />
                     </span>
                   ))}
-                </div>
+                </div> */}
                 <div className="-ml-4">{item.riveComponent}</div>
 
                 <div className="px-4 py-4 ">
@@ -102,6 +89,23 @@ function L3CommonLayout(item: L3CommonLayoutInterface) {
               </div> */}
 
               {/* <div className="mt-4"></div> */}
+              <div className="absolute bottom-4 right-4">
+                <motion.div
+                // animate={{ scale: 1.03 }}
+                // transition={{
+                //   duration: 0.9,
+                //   repeat: Infinity,
+                //   repeatType: "reverse",
+                // }}
+                >
+                  <div className="flex -mt-4 -ml-4 text-sm ">
+                    <div className="mt-2 mr-2 font-semibold text-gray-400">
+                      {item.title}
+                    </div>
+                    <Image src={item.logo} width={32} height={32} alt="" />
+                  </div>
+                </motion.div>
+              </div>
             </div>
           )
         )}

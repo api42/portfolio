@@ -15,9 +15,12 @@ let HomeViewStore = (set) => ({
   StopDMAnimation: true,
   changeStopDMAnimation: (input) =>
     set((state) => ({ StopDMAnimation: input })),
+
+  NFTDisplayViewStore: false,
+  changeNFTDisplayViewStore: (input) =>
+    set((state) => ({ NFTDisplayViewStore: input })),
 });
 
 HomeViewStore = devtools(HomeViewStore);
-HomeViewStore = persist(HomeViewStore);
 
 export const useHomeViewStore = create(HomeViewStore);

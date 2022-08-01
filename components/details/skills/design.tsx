@@ -46,7 +46,7 @@ function Design() {
   const full_stack_data = [
     {
       id: 0,
-      title: "Next JS | React JS | Express JS |  jQuery | Vanila JS",
+      title: "Notion",
       data: projects_for_fullstack_data[0],
       skills: "💎 💎 💎",
       logo: "/assets/notion-logo.png",
@@ -59,7 +59,7 @@ function Design() {
 
     {
       id: 1,
-      title: "Tailwind CSS | Bootstrap | Material UI | SASS | CSS",
+      title: "Figma",
       data: projects_for_fullstack_data[1],
       skills: "💎 💎 💎 💎",
       logo: "/assets/figma-logo-1.png",

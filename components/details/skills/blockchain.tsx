@@ -46,7 +46,7 @@ function Blockchain() {
   const full_stack_data = [
     {
       id: 0,
-      title: "Next JS | React JS | Express JS |  jQuery | Vanila JS",
+      title: "Etherum",
       data: projects_for_fullstack_data[0],
       skills: "💎 💎 💎",
       logo: "/assets/etherum-logo-1.png",
@@ -59,7 +59,7 @@ function Blockchain() {
 
     {
       id: 1,
-      title: "Tailwind CSS | Bootstrap | Material UI | SASS | CSS",
+      title: "Polygon",
       data: projects_for_fullstack_data[1],
       skills: "💎 💎 💎 💎",
       logo: "/assets/polygon-matic-logo.png",
@@ -72,7 +72,7 @@ function Blockchain() {
 
     {
       id: 2,
-      title: "Rive",
+      title: "Solana",
       data: projects_for_fullstack_data[2],
       skills: "💎 💎",
       logo: "/assets/solana-sol-logo.png",

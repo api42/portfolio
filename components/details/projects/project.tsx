@@ -69,7 +69,7 @@ function ProjectBox(item: ProjectDetailsInterface) {
                 alt=""
               />
               <span className="w-2 "></span>
-              <span className="mt-1 "> Figma File</span>
+              <span className="mt-[2px]">Figma File</span>
             </a>
           </span>
           <span>
@@ -81,7 +81,7 @@ function ProjectBox(item: ProjectDetailsInterface) {
             >
               <Image src="/assets/github.png" width={24} height={24} alt="" />
               <span className="w-2 "></span>
-              <span className="mt-1 "> Code</span>
+              <span className="mt-[2px] ">Code</span>
             </a>
           </span>
         </div>

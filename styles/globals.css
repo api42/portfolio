@@ -31,13 +31,16 @@
   font-display: swap;
 }
 
-
+*{
+  border: 1px solid red;
+}
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: Gilroy;
   background: linear-gradient(180deg, #13141c 0%, #0c0c17 100%);  color: white;
+   overflow: none;
 }
 
 a {
@@ -153,6 +156,10 @@ text-fill-color: transparent;
         -webkit-text-fill-color: transparent;
 }
 
+.nft-grad {
+  background: linear-gradient(90deg, #1521ca 0%, #d732d7 100%);
+}
+
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .hide-scrollbar::-webkit-scrollbar {
@@ -172,4 +179,16 @@ text-fill-color: transparent;
 .main-bg {
   background: linear-gradient(180deg, #13141c 0%, #0c0c17 100%);  color: white;
 
+}
+
+
+.backdrop-filter {
+  background: #fff ;  
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .backdrop-filter {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
 }

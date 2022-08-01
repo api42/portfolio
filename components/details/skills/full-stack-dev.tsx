@@ -39,7 +39,7 @@ function FullStackDev() {
   const full_stack_data = [
     {
       id: 0,
-      title: "Next JS | React JS | Express JS |  jQuery | Vanila JS",
+      title: "Javascript",
       data: projects_for_fullstack_data[0],
       skills: "💎 💎 💎",
       logo: "/assets/js.png",
@@ -52,7 +52,7 @@ function FullStackDev() {
 
     {
       id: 1,
-      title: "Tailwind CSS | Bootstrap | Material UI | SASS | CSS",
+      title: "CSS",
       data: projects_for_fullstack_data[1],
       skills: "💎 💎 💎 💎",
       logo: "/assets/css-3.png",
@@ -65,7 +65,7 @@ function FullStackDev() {
 
     {
       id: 2,
-      title: "Redux | Zustand",
+      title: "Redux",
       data: projects_for_fullstack_data[2],
       skills: "💎 💎",
       logo: "/assets/redux.png",

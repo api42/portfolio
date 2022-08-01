@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 import { useHomeViewStore } from "./../../ViewStore/homeViewStore";
@@ -10,21 +10,43 @@ function RightSideLayout() {
     (state) => state.changeStopDMAnimation
   );
 
+  const L1Selection = useHomeViewStore((state) => state.L1Selection);
+
+  const changeL1Selection = useHomeViewStore(
+    (state) => state.changeL1Selection
+  );
+
+  const NFTDisplayViewStore = useHomeViewStore(
+    (state) => state.NFTDisplayViewStore
+  );
+  const changeNFTDisplayViewStore = useHomeViewStore(
+    (state) => state.changeNFTDisplayViewStore
+  );
+
   const [mintStatusHook, setMintStatusHook] = useState(false);
+  const [mintselectedHook, setMintselectedHook] = useState(false);
+
+  const [L1Hook, setL1Hook] = useState(L1Selection);
 
   const mintStatus = mintStatusHook ? "visible" : "invisible";
+  const mintStatusText = mintStatusHook ? "visible" : "invisible";
 
   function mouseEnter() {
     setMintStatusHook(true);
     changeStopDMAnimation(true);
-    console.log("mm", mintStatus);
   }
   function mouseLeave() {
     setMintStatusHook(false);
     changeStopDMAnimation(false);
-
-    console.log("mm2", mintStatus);
   }
+
+  function NFTPreviewClicked() {
+    console.log("mm2");
+    changeNFTDisplayViewStore(!NFTDisplayViewStore);
+  }
+  useEffect(() => {
+    changeStopDMAnimation(StopDMAnimation);
+  }, [StopDMAnimation]);
 
   const l1data = [
     {
@@ -46,15 +68,18 @@ function RightSideLayout() {
   return (
     <div className="font-semibold">
       <div
-        className="items-center justify-center hidden text-center transition-all duration-300 rounded-md cursor-pointer common-bg-color sm:flex blur-sm hover:blur-none "
+        className={`   "items-center justify-center hidden text-center transition-all duration-300 rounded-md cursor-pointer common-bg-color sm:flex  hover:blur-none "   ${
+          L1Hook == 8 ? " blur-none" : "blur-sm"
+        }`}
         onMouseEnter={mouseEnter}
         onMouseLeave={mouseLeave}
+        onClick={NFTPreviewClicked}
       >
         <div
           className={` ${mintStatus} absolute z-50 flex justify-center  w-full h-10 mb-28 bg-black  opacity-60  `}
         ></div>
         <div
-          className={` ${mintStatus} absolute z-50 flex justify-center  w-full h-10     `}
+          className={` ${mintStatusText} absolute z-50 flex justify-center  w-full h-10     `}
         >
           <span className="-mt-12 opacity-100 title-gradient-2 hover:text-white animate-bounce">
             Click to mint
@@ -82,12 +107,12 @@ function RightSideLayout() {
           </a>
         ))}
       </div>
-      <div className="flex flex-col items-center justify-center py-4 text-center text-white rounded-md cursor-pointer w-36 common-bg-color ">
+      {/* <div className="flex flex-col items-center justify-center py-4 text-center text-white rounded-md cursor-pointer w-36 common-bg-color ">
         <div className="hover:scale-105">
-          <div className="text-3xl animate-pulse "> 👋</div>
-          <div className=""> Work with me</div>
+          <div className="text-3xl animate-pulse ">👋</div>
+          <div className="">Work with me</div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
