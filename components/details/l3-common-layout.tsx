@@ -17,11 +17,11 @@ function L3CommonLayout(item: L3CommonLayoutInterface) {
       <div>
         <span className="text-base font-semibold sm:text-xl">{item.title}</span>
         <div
-          className={`${item.titleUnderlineColor} w-44 mt-4 h-1 rounded-sm`}
+          className={`${item.titleUnderlineColor} w-44 mt-2 sm:mt-4 h-1 rounded-sm`}
         ></div>
       </div>
 
-      <div className="justify-between mt-8 h-[40vh] sm:h-auto hide-scrollbar overflow-y-scroll sm:overflow-visible sm:flex sm:mt-12 rounded-xl">
+      <div className="justify-between mt-4  h-[52vh] sm:h-auto hide-scrollbar overflow-y-scroll sm:overflow-visible sm:flex sm:mt-12 rounded-xl">
         {item.data.map(
           (item: {
             riveComponent: React.ReactNode;
@@ -54,7 +54,7 @@ function L3CommonLayout(item: L3CommonLayoutInterface) {
           }) => (
             <div
               key={item.id}
-              className="relative mb-8 rounded-lg common-bg-color h-[14rem] sm:w-48"
+              className="relative mb-8 rounded-lg common-bg-color h-[10rem] sm:h-[14rem] sm:w-48"
             >
               <div className="items-start justify-start font-semibold ">
                 {/* <div className="mt-4 ml-4 space-x-2" data-tip="Skill Level">

@@ -10,7 +10,7 @@ function PreviousProjects() {
       web_link: "https://itsok.co.in",
       type: "Contract Work",
       status: "Product Live",
-      tech_stack: ["Design", "Figma"],
+      tech_stack: ["Design", "Figma", "Next js", "CSS"],
       desc: "MetaRings is NFT proejct where this and that and too and eff and lev len and lev lenand lev lenand lev lenand lev lenand lev len",
       figma_link: "figma link",
       github_link: "github link",
@@ -22,7 +22,7 @@ function PreviousProjects() {
       web_link: "https://ithaka.app",
       type: "Passion Project",
       status: "Product Dead",
-      tech_stack: ["Firebase", "Flutter"],
+      tech_stack: ["Firebase", "Flutter", "there"],
       desc: "MetaRings is NFT proejct where this and that and too and eff and lev len and lev lenand lev lenand lev lenand lev lenand lev len",
       figma_link: "figma link",
       github_link: "github link",
@@ -66,7 +66,7 @@ function PreviousProjects() {
 
   return (
     <div>
-      <div className="overflow-y-scroll h-[62vh] relative hide-scrollbar">
+      <div className="overflow-y-scroll h-[62vh] relative hide-scrollbar   scroll-smooth">
         {project.map((item) => (
           <ProjectBox
             key={item.id}

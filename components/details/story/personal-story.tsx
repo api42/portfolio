@@ -1,7 +1,7 @@
 import React from "react";
 
 function PersonalStory() {
-  const title = "Yo, there is a title";
+  const title = "The story so far...";
   const underlinecolor = "green-green-grad";
 
   return (

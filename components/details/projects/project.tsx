@@ -15,46 +15,59 @@ interface ProjectDetailsInterface {
 
 function ProjectBox(item: ProjectDetailsInterface) {
   return (
-    <div className="px-8 py-8 mb-8   rounded-xl sm:w-[40rem] common-bg-color font-semibold  border-[1px] border-transparent  ">
+    <div className=" p-4 sm:p-8 mb-8   rounded-xl sm:w-[40rem] common-bg-color font-semibold  border-[1px] border-transparent  ">
       <div className="flex justify-between">
-        <span className=""> {item.title}</span>
+        <div className="flex ">
+          <span className="">
+            <Image
+              src="/assets/polygon-matic-logo.png"
+              width={28}
+              height={28}
+              alt=""
+            />
+          </span>
 
-        <div className="flex justify-start font-normal ">
+          <div className="ml-3 text-xl "> {item.title}</div>
+        </div>
+        <span className="cursor-pointer ">
+          <Image src="/assets/go-to-link.png" width={14} height={14} alt="" />
+        </span>
+        {/* <div className="flex justify-start font-normal ">
           <span className="text-gray-400 ">type</span>
           <span className="w-2 "></span>
           {item.type}
-        </div>
+        </div> */}
       </div>
 
       <div className="flex justify-between font-normal">
-        <span className="cursor-pointer title-gradient-2 ">
+        {/* <span className="cursor-pointer title-gradient-2 ">
           <a href={item.web_link} target="_blank" rel="noreferrer">
             {item.web_link}
           </a>
-        </span>
-        <div className="flex justify-start ">
+        </span> */}
+        {/* <div className="flex justify-start ">
           <span className="text-gray-400 ">status</span>
           <span className="w-2 "></span>
           {item.status}
-        </div>
+        </div> */}
       </div>
 
-      <div className="mt-4 text-sm font-normal">{item.desc}</div>
+      <div className="mt-4 text-lg font-normal">{item.desc}</div>
 
-      <div className="flex justify-between mt-8 ">
+      <div className="flex flex-col mt-8 sm:flex-row sm:justify-between ">
         <div className="flex items-start justify-start font-normal">
           <Image src="/assets/layer.png" width={24} height={24} alt="" />
 
-          <span className="grid grid-cols-2 ml-4 text-sm font-semibold w-28">
+          <span className="grid items-start w-auto grid-cols-2 ml-4 text-base font-semibold">
             {item.tech_stack.map((items) => (
-              <div key={items} className="hover:title-gradient-2">
+              <div key={items} className="mb-2 mr-4 hover:title-gradient-2">
                 {items}
               </div>
             ))}
           </span>
         </div>
 
-        <div className="flex justify-start space-x-4 text-sm">
+        <div className="flex justify-start mt-4 space-x-4 text-base">
           <span>
             <a
               href={item.figma_link}
@@ -69,7 +82,7 @@ function ProjectBox(item: ProjectDetailsInterface) {
                 alt=""
               />
               <span className="w-2 "></span>
-              <span className="mt-[2px]">Figma File</span>
+              <span className="sm:mt-[2px]">Figma File</span>
             </a>
           </span>
           <span>
@@ -81,7 +94,7 @@ function ProjectBox(item: ProjectDetailsInterface) {
             >
               <Image src="/assets/github.png" width={24} height={24} alt="" />
               <span className="w-2 "></span>
-              <span className="mt-[2px] ">Code</span>
+              <span className="sm:mt-[2px] ">Code</span>
             </a>
           </span>
         </div>

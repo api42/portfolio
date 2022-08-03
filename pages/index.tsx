@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import AllHobbies from "../components/details/hobbies/all-hobbies";
 import Blockchain from "../components/details/skills/blockchain";
+import ClickToMint from "../components/details/NFT/clicktomint";
 import CurrentProjects from "../components/details/projects/current-projects";
 import Design from "../components/details/skills/design";
 import FullStackDev from "../components/details/skills/full-stack-dev";
@@ -41,12 +42,12 @@ const Home: NextPage = () => {
 
   const [dmsOpenHook, setDmsOpenHook] = useState(StopDMAnimation);
 
-  const dmsOpen = dmsOpenHook ? "animate-bounce" : "animate-none";
+  const dmsOpen = dmsOpenHook ? "sm:animate-bounce" : "sm:animate-none";
 
   const L2OptionsForSkills = [
     {
       id: 0,
-      name: "Full stack dev",
+      name: "Dev",
       details_id: 0,
       emoji: "🧑‍💻",
       bg: " yelllow-red-grad",
@@ -113,7 +114,7 @@ const Home: NextPage = () => {
 
   const L3Options = [
     { id: 0, name: "Brief", component: <PersonalStory /> },
-    { id: 1, name: "Full stack dev", component: <FullStackDev /> },
+    { id: 1, name: "Development", component: <FullStackDev /> },
     { id: 2, name: "Design", component: <Design /> },
     { id: 3, name: "Blockchain", component: <Blockchain /> },
     { id: 4, name: "Current Projects", component: <CurrentProjects /> },
@@ -234,7 +235,7 @@ const Home: NextPage = () => {
 
     return (
       <div
-        className="pl-4 text-center cursor-pointer sm:mb-8 sm:space-x-4 sm:w-auto sm:items-center sm:flex hover:scale-105"
+        className="w-16 text-center cursor-pointer sm:pl-4 sm:mb-8 sm:space-x-4 sm:w-auto sm:items-center sm:flex hover:scale-105"
         onClick={() => changeL2State(item.id, item.details_id)}
       >
         <div
@@ -319,6 +320,7 @@ const Home: NextPage = () => {
               <div className="absolute z-0 opacity-30 -inset-1 transitiona-all rounded-xl blur-lg filter all-color-bg"></div>
               <div className="text-base sm:text-xl ">Apurva Raj</div>
             </div>
+
             <a
               href="https://twitter.com/apimetaring"
               target="_blank"
@@ -356,6 +358,7 @@ const Home: NextPage = () => {
           {/* Header: End  */}
 
           {/* Body: Starts  */}
+
           <div className="block">
             <div className="absolute flex items-center w-full mt-8 space-x-4 justify-evenly sm:justify-center sm:space-x-8 sm:relative bottom-16 sm:bottom-0">
               {L1Options.map((item) => (
@@ -367,7 +370,7 @@ const Home: NextPage = () => {
           <div className="mt-4 sm:mt-12 ">
             <div className="flex items-start ">
               {/* L2 Selection Bar : Left */}
-              <div className="w-full mx-4 sm:mx-0 sm:w-44">
+              <div className="w-full ml-1 sm:mx-0 sm:w-44 sm:ml-0">
                 {L1Options.filter((object) => object.id == L1SelectionHook).map(
                   (items) => (
                     <div key={items.id} className="flex justify-start sm:block">
@@ -401,7 +404,7 @@ const Home: NextPage = () => {
             {/* Right pannel view  */}
           </div>
 
-          <div className="absolute right-0 hidden top-[16rem] sm:block">
+          <div className="absolute right-0 hidden top-[15.5rem] sm:block">
             <RightSideLayout />
           </div>
 
@@ -409,7 +412,7 @@ const Home: NextPage = () => {
             <RightSideLayout />
           </div>
           {/* Body: End  */}
-          <div className="absolute sm:block hidden text-center left-1/2 ml-[-12rem] w-96 bottom-8 ">
+          <div className="absolute  text-xs sm:text-base text-center left-1/2 ml-[-12rem] w-96 bottom-10 ">
             <span className="">
               {" "}
               🏗 Built using no code with{" "}
